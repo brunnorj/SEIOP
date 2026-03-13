@@ -275,7 +275,8 @@
                     }
                 } catch (error) {
                     console.error("Erro na autenticação:", error);
-                    setSyncStatus('Erro de autenticação');
+                    // Mostra o código de erro exato no badge de status para ajudar no debug
+                    setSyncStatus(`Erro Auth: ${error.code || 'Desconhecido'}`);
                 }
             };
             initAuth();
@@ -300,7 +301,7 @@
                 setSyncStatus('Sincronizado na nuvem ☁️');
             }, (error) => {
                 console.error("Erro ao ler dados:", error);
-                setSyncStatus('Desconectado');
+                setSyncStatus(`Erro leitura: ${error.code || 'Desconectado'}`);
             });
 
             return () => unsubscribe();
@@ -333,6 +334,8 @@
                     console.error("Erro ao salvar:", error);
                     setSyncStatus('Erro ao salvar');
                 }
+            } else {
+                setSyncStatus('Erro: Precisa estar conectado');
             }
         };
 
