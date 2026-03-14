@@ -123,17 +123,15 @@
         // 4. Adicione a URL do seu GitHub Pages (ex: *brunnorj.github.io/*)
         // Dessa forma, mesmo que a chave esteja pública no GitHub, ninguém conseguirá usá-la fora do seu site.
         
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : {
-                apiKey: "COLE_SUA_NOVA_API_KEY_AQUI", // Insira a nova chave gerada aqui, após restringi-la
-                authDomain: "COLE_SEU_AUTH_DOMAIN_AQUI",
-                projectId: "glpi-dashboard", // do seu projeto GCP atual
-                storageBucket: "COLE_SEU_STORAGE_BUCKET_AQUI",
-                messagingSenderId: "COLE_SEU_MESSAGING_SENDER_ID_AQUI",
-                appId: "COLE_SEU_APP_ID_AQUI",
-                databaseURL: "https://glpi-dashboard-default-rtdb.firebaseio.com"
-            };
+       const firebaseConfig = {
+  apiKey: "AIzaSyBMDQTs18MtvieRPliBV41xVKU8GPRfmsg",
+  authDomain: "glpi-dashboard.firebaseapp.com",
+  databaseURL: "https://glpi-dashboard-default-rtdb.firebaseio.com",
+  projectId: "glpi-dashboard",
+  storageBucket: "glpi-dashboard.firebasestorage.app",
+  messagingSenderId: "1060781939554",
+  appId: "1:1060781939554:web:0a7b10af7a9b2ea8cc6a3b"
+};
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
