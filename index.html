@@ -113,21 +113,26 @@
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
 
-        // CONFIGURAÇÃO DO BANCO DE DADOS (FIREBASE)
-        // IMPORTANTE PARA O GITHUB PAGES:
-        // Para que o progresso sincronize entre computadores diferentes no GitHub Pages, você precisará
-        // criar um projeto no Firebase (firebase.google.com), adicionar um App Web e
-        // substituir os valores "COLE_SUA_API_KEY_AQUI", etc., pelas suas chaves reais.
+        // 🚨 ATENÇÃO - SEGURANÇA DA CHAVE DE API (AVISO DO GOOGLE) 🚨
+        // Como o projeto está no GitHub Pages (público), a chave de API ficará visível no código HTML/JS.
+        // Isso é o comportamento padrão de aplicativos Web com Firebase. 
+        // A SOLUÇÃO CORRETA para evitar o alerta de abuso do Google Cloud é:
+        // 1. Acesse: https://console.cloud.google.com/apis/credentials (com sua conta Google)
+        // 2. Apague ou Regenere a chave que vazou (AIzaSyBMDQTs18MtvieRPliBV41xVKU8GPRfmsg).
+        // 3. Edite a nova chave gerada. Em "Restrições do aplicativo", selecione "Referenciadores HTTP (sites da Web)".
+        // 4. Adicione a URL do seu GitHub Pages (ex: *brunnorj.github.io/*)
+        // Dessa forma, mesmo que a chave esteja pública no GitHub, ninguém conseguirá usá-la fora do seu site.
+        
         const firebaseConfig = typeof __firebase_config !== 'undefined' 
             ? JSON.parse(__firebase_config) 
             : {
-                apiKey: "AIzaSyBMDQTs18MtvieRPliBV41xVKU8GPRfmsg",
-  authDomain: "glpi-dashboard.firebaseapp.com",
-  databaseURL: "https://glpi-dashboard-default-rtdb.firebaseio.com",
-  projectId: "glpi-dashboard",
-  storageBucket: "glpi-dashboard.firebasestorage.app",
-  messagingSenderId: "1060781939554",
-  appId: "1:1060781939554:web:0a7b10af7a9b2ea8cc6a3b"
+                apiKey: "COLE_SUA_NOVA_API_KEY_AQUI", // Insira a nova chave gerada aqui, após restringi-la
+                authDomain: "COLE_SEU_AUTH_DOMAIN_AQUI",
+                projectId: "glpi-dashboard", // do seu projeto GCP atual
+                storageBucket: "COLE_SEU_STORAGE_BUCKET_AQUI",
+                messagingSenderId: "COLE_SEU_MESSAGING_SENDER_ID_AQUI",
+                appId: "COLE_SEU_APP_ID_AQUI",
+                databaseURL: "https://glpi-dashboard-default-rtdb.firebaseio.com"
             };
 
         const app = initializeApp(firebaseConfig);
